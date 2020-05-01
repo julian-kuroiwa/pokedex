@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Container, Header, Title, Pokemons } from './styles';
 
@@ -22,62 +23,62 @@ const Dashboard: React.FC = () => {
       </form>
 
       <Pokemons>
-        <a href="/">
+        <Link to="/pokemons">
           <img
             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
             alt="Ditto"
           />
           <strong>Ditto</strong>
           <span>132</span>
-        </a>
-        <a href="/">
+        </Link>
+        <Link to="/pokemons">
           <img
             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
             alt="Ditto"
           />
           <strong>Ditto</strong>
           <span>132</span>
-        </a>
-        <a href="/">
+        </Link>
+        <Link to="/pokemons">
           <img
             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
             alt="Ditto"
           />
           <strong>Ditto</strong>
           <span>132</span>
-        </a>
-        <a href="/">
+        </Link>
+        <Link to="/pokemons">
           <img
             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
             alt="Ditto"
           />
           <strong>Ditto</strong>
           <span>132</span>
-        </a>
-        <a href="/">
+        </Link>
+        <Link to="/pokemons">
           <img
             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
             alt="Ditto"
           />
           <strong>Ditto</strong>
           <span>132</span>
-        </a>
-        <a href="/">
+        </Link>
+        <Link to="/pokemons">
           <img
             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
             alt="Ditto"
           />
           <strong>Ditto</strong>
           <span>132</span>
-        </a>
-        <a href="/">
+        </Link>
+        <Link to="/pokemons">
           <img
             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
             alt="Ditto"
           />
           <strong>Ditto</strong>
           <span>132</span>
-        </a>
+        </Link>
       </Pokemons>
     </Container>
   );
