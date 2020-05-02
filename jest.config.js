@@ -1,12 +1,11 @@
 module.exports = {
   roots: ["<rootDir>/src"],
   transform: {
-    "^.+\\.tsx?$": "ts-jest"
+  "^.+\\.tsx?$": "ts-jest",
+  "\\.svg$": "<rootDir>/src/fileTransformer.ts"
   },
-  // setupFilesAfterEnv: [
-  //   "@testing-library/react/cleanup-after-each",
-  //   "@testing-library/jest-dom/extend-expect"
-  // ],
   testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
-  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"]
-};
+  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
+  snapshotSerializers: ["enzyme-to-json/serializer"],
+  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"]
+}

@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import { FiX } from 'react-icons/fi';
 
-import { Container, Header, Title, Pokemons } from './styles';
+import { Container, Header, Title, Pokemons, Error } from './styles';
 
 import Logo from '../../assets/logo-white.svg';
 import LogoPokemon from '../../assets/logo-pokemon.svg';
@@ -12,39 +13,47 @@ import api from '../../services/api';
 
 interface Pokemon {
   name: string;
-  url: string;
+  url?: string;
   id: string;
 }
 
-interface Response {
-  next: string | null;
-  results: Pokemon[];
-}
-
 const Dashboard: React.FC = () => {
-  const [morePokemons, setMorePokemons] = useState('');
+  const [inputValue, setInputValue] = useState('');
+  const [nextPageUrl, setNextPageUrl] = useState('');
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
-  const responseHandle = (response: Response): void => {
-    const newPokemons = response.results.map(
-      ({ name, url }: Omit<Pokemon, 'number'>) => {
-        return {
-          name,
-          url,
-          id: url.match(/\/(\d+)\//g)[0].split('/')[1],
-        };
-      },
-    );
+  const requestHandle = async (params: string): Promise<void> => {
+    setLoading(true);
+    setError(false);
 
-    const { next } = response;
+    try {
+      const response = await api.get(params);
 
-    if (next) {
-      setMorePokemons(next.substring(next.indexOf('?')));
+      const newPokemons = response.data.results.map(
+        ({ name, url }: Pokemon) => {
+          const id = url.match(/\/(\d+)\//g)[0].split('/')[1];
+
+          return {
+            name,
+            id,
+          };
+        },
+      );
+
+      const { next } = response.data;
+
+      setNextPageUrl(next);
+
+      setPokemons(prevState => [...prevState, ...newPokemons]);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      setError(!!err);
+
+      console.error(err);
     }
-
-    setPokemons((prevState) => [...prevState, ...newPokemons]);
-    setLoading(false);
   };
 
   const scrollHandle = useCallback(() => {
@@ -56,19 +65,52 @@ const Dashboard: React.FC = () => {
       return;
     }
 
-    if (morePokemons) {
-      setLoading(true);
-
-      setTimeout(() => {
-        api.get(morePokemons).then((response) => responseHandle(response.data));
-      }, 1000);
+    if (nextPageUrl) {
+      requestHandle(nextPageUrl);
     }
-  }, [morePokemons, loading]);
+  }, [nextPageUrl, loading]);
 
-  useEffect(() => {
+  const changeInputHandle = (event: { target: { value: string } }) => {
+    setInputValue(event.target.value);
+
+    if (event.target.value === '' && pokemons.length <= 1) {
+      setPokemons([]);
+      requestHandle('?limit=21');
+    }
+  };
+
+  const blurInputHandle = () => {
+    if (pokemons.length <= 1) {
+      setPokemons([]);
+      requestHandle('?limit=21');
+    }
+  };
+
+  const submitHandle = async (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+
+    if (!inputValue) {
+      return;
+    }
+
+    setPokemons([]);
     setLoading(true);
 
-    api.get('?limit=21').then((response) => responseHandle(response.data));
+    try {
+      const response = await api.get(inputValue);
+
+      setPokemons([response.data]);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      setError(!!err);
+
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    requestHandle('?limit=21');
   }, []);
 
   useEffect(() => {
@@ -86,13 +128,25 @@ const Dashboard: React.FC = () => {
       </Header>
       <img src={LogoPokemon} alt="Logo Pokémon" />
       <Title>Encontre o Pokémon pelo nome ou número</Title>
-      <form>
-        <input type="text" />
+      <form onSubmit={submitHandle}>
+        <div>
+          <input
+            type="text"
+            value={inputValue}
+            onChange={changeInputHandle}
+            onBlur={blurInputHandle}
+          />
+          {inputValue && (
+            <button type="button" onClick={() => setInputValue('')}>
+              <FiX size={30} color="#ff0090" />
+            </button>
+          )}
+        </div>
         <button type="submit">Procurar</button>
       </form>
 
       <Pokemons>
-        {pokemons.map((pokemon) => (
+        {pokemons.map(pokemon => (
           <Link to={`/pokemons/${pokemon.name}`} key={pokemon.name}>
             <img
               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
@@ -105,6 +159,7 @@ const Dashboard: React.FC = () => {
       </Pokemons>
 
       {loading && <Loader />}
+      {error && <Error>Pokemon não encontrado :(</Error>}
     </Container>
   );
 };
