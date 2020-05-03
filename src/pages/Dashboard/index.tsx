@@ -8,12 +8,12 @@ import React, {
 import { Link } from 'react-router-dom';
 import { FiX } from 'react-icons/fi';
 
-import { Container, Header, Title, Pokemons, Error } from './styles';
+import { Container, Title, Pokemons, Error } from './styles';
 
-import Logo from '../../assets/logo-white.svg';
 import LogoPokemon from '../../assets/logo-pokemon.svg';
 
 import Loader from '../../components/Loader';
+import Header from '../../components/Header';
 
 import api from '../../services/api';
 
@@ -133,12 +133,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <Container>
-      <Header>
-        <div>
-          <img src={Logo} alt="Logo Hanzo" />
-          <div />
-        </div>
-      </Header>
+      <Header />
       <img src={LogoPokemon} alt="Logo Pokémon" />
       <Title>Encontre o Pokémon pelo nome ou número</Title>
       <form onSubmit={submitHandle}>
