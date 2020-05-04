@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   max-width: 600px;
   margin: 40px auto;
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
 
   header {
     width: 100%;
@@ -17,27 +15,19 @@ export const Container = styled.div`
     padding: 20px;
     color: #fff;
     font-size: 18px;
+    text-transform: capitalize;
 
     > span {
       font-weight: bold;
     }
   }
 
-  ul {
-    list-style: none;
-    width: 100%;
+  > div {
     display: flex;
-    margin: 20px 0;
-
-    > li {
-      padding: 5px 10px;
-      background-color: yellow;
-      color: var(--text-color);
-
-      & + li {
-        margin-left: 10px;
-      }
-    }
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
   }
 
   img {

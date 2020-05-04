@@ -7,7 +7,7 @@ import Pokemon from '../pages/Pokemon';
 const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={Dashboard} />
-    <Route path="/pokemons/:pokemon?" exact component={Pokemon} />
+    <Route path="/pokemons/:pokemon+" component={Pokemon} />
   </Switch>
 );
 

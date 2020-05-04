@@ -2,19 +2,21 @@ import React from 'react';
 
 import { Container } from './styles';
 
-interface StatProps {
+export interface PokemonStats {
+  base_stat: string;
   stat: {
-    base_stat: number;
-    stat: {
-      name: string;
-    };
+    name: string;
   };
 }
 
-const PokemonInfoStatsItem: React.FC<StatProps> = ({ stat }) => (
-  <Container>
+interface PokemonStatsProps {
+  stat: PokemonStats;
+}
+
+const PokemonInfoStatsItem: React.FC<PokemonStatsProps> = ({ stat }) => (
+  <Container baseStat={stat.base_stat}>
     <strong>{stat.stat.name}:</strong>
-    <span>{stat.base_stat}</span>
+    <div />
   </Container>
 );
 

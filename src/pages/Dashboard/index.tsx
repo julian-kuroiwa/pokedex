@@ -98,6 +98,8 @@ const Dashboard: React.FC = () => {
   const clearButtonHandle = (): void => {
     inputRef.current.value = '';
     setInputHasValue(!!inputRef.current.value);
+
+    setInitialList();
   };
 
   const submitHandle = async (
@@ -111,6 +113,8 @@ const Dashboard: React.FC = () => {
 
     setPokemons([]);
     setLoading(true);
+    setError(false);
+
     try {
       const response = await api.get(inputRef.current.value);
       setPokemons([response.data]);

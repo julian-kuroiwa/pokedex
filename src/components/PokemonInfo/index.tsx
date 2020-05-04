@@ -2,21 +2,11 @@ import React from 'react';
 
 import { Container } from './styles';
 
+import PokemonInfoTypeContainer, {
+  PokemonTypes,
+} from './PokemonInfoTypeContainer';
 import PokemonInfoStatsContainer from './PokemonInfoStatsContainer';
-import PokemonInfoStatsItem from './PokemonInfoStatsContainer/PokemonInfoStatsItem';
-
-interface PokemonTypes {
-  type: {
-    name: string;
-  };
-}
-
-interface PokemonStats {
-  base_stat: number;
-  stat: {
-    name: string;
-  };
-}
+import { PokemonStats } from './PokemonInfoStatsContainer/PokemonInfoStatsItem';
 
 export interface PokemonProps {
   id: number;
@@ -39,17 +29,14 @@ const PokemonInfo: React.FC<PokemonInfoProps> = ({ pokemon }) => {
         <h2>{pokemon.name}</h2>
         <span>#{pokemon.id}</span>
       </header>
-      <ul>
-        {pokemon.types.map(type => (
-          <li>{type.type.name}</li>
-        ))}
-      </ul>
-      <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-      <PokemonInfoStatsContainer>
-        {pokemon.stats.map(stat => (
-          <PokemonInfoStatsItem stat={stat} />
-        ))}
-      </PokemonInfoStatsContainer>
+
+      <div>
+        <PokemonInfoTypeContainer pokemonTypes={pokemon.types} />
+
+        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+
+        <PokemonInfoStatsContainer pokemonStats={pokemon.stats} />
+      </div>
     </Container>
   );
 };
