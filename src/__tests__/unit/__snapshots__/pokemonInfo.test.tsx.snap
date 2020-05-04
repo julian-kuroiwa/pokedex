@@ -1,0 +1,313 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PokemonInfo should match snapshot 1`] = `
+<PokemonInfo
+  pokemon={
+    Object {
+      "id": 132,
+      "name": "ditto",
+      "sprites": Object {
+        "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
+      },
+      "stats": Array [
+        Object {
+          "base_stat": "48",
+          "stat": Object {
+            "name": "speed",
+          },
+        },
+        Object {
+          "base_stat": "48",
+          "stat": Object {
+            "name": "special-defense",
+          },
+        },
+        Object {
+          "base_stat": "48",
+          "stat": Object {
+            "name": "special-attack",
+          },
+        },
+        Object {
+          "base_stat": "48",
+          "stat": Object {
+            "name": "defense",
+          },
+        },
+        Object {
+          "base_stat": "48",
+          "stat": Object {
+            "name": "attack",
+          },
+        },
+        Object {
+          "base_stat": "48",
+          "stat": Object {
+            "name": "hp",
+          },
+        },
+      ],
+      "types": Array [
+        Object {
+          "type": Object {
+            "name": "normal",
+          },
+        },
+      ],
+    }
+  }
+>
+  <styled.div>
+    <div
+      className="sc-AxjAm hbUrdP"
+    >
+      <header>
+        <h2>
+          ditto
+        </h2>
+        <span>
+          #
+          132
+        </span>
+      </header>
+      <div>
+        <PokemonInfoTypeContainer
+          pokemonTypes={
+            Array [
+              Object {
+                "type": Object {
+                  "name": "normal",
+                },
+              },
+            ]
+          }
+        >
+          <styled.ul>
+            <ul
+              className="sc-AxirZ eNJIJQ"
+            >
+              <PokemonInfoTypeItem
+                key="normal"
+                type="normal"
+              >
+                <styled.li
+                  typeName="normal"
+                >
+                  <li
+                    className="sc-AxiKw iaYPAM"
+                  >
+                    normal
+                  </li>
+                </styled.li>
+              </PokemonInfoTypeItem>
+            </ul>
+          </styled.ul>
+        </PokemonInfoTypeContainer>
+        <img
+          alt="ditto"
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+        />
+        <PokemonInfoStatsContainer
+          pokemonStats={
+            Array [
+              Object {
+                "base_stat": "48",
+                "stat": Object {
+                  "name": "speed",
+                },
+              },
+              Object {
+                "base_stat": "48",
+                "stat": Object {
+                  "name": "special-defense",
+                },
+              },
+              Object {
+                "base_stat": "48",
+                "stat": Object {
+                  "name": "special-attack",
+                },
+              },
+              Object {
+                "base_stat": "48",
+                "stat": Object {
+                  "name": "defense",
+                },
+              },
+              Object {
+                "base_stat": "48",
+                "stat": Object {
+                  "name": "attack",
+                },
+              },
+              Object {
+                "base_stat": "48",
+                "stat": Object {
+                  "name": "hp",
+                },
+              },
+            ]
+          }
+        >
+          <styled.div>
+            <div
+              className="sc-AxhCb iyIKL"
+            >
+              <PokemonInfoStatsItem
+                key="speed"
+                stat={
+                  Object {
+                    "base_stat": "48",
+                    "stat": Object {
+                      "name": "speed",
+                    },
+                  }
+                }
+              >
+                <styled.li
+                  baseStat="48"
+                >
+                  <li
+                    className="sc-AxhUy cZeKdq"
+                  >
+                    <strong>
+                      speed
+                      :
+                    </strong>
+                    <div />
+                  </li>
+                </styled.li>
+              </PokemonInfoStatsItem>
+              <PokemonInfoStatsItem
+                key="special-defense"
+                stat={
+                  Object {
+                    "base_stat": "48",
+                    "stat": Object {
+                      "name": "special-defense",
+                    },
+                  }
+                }
+              >
+                <styled.li
+                  baseStat="48"
+                >
+                  <li
+                    className="sc-AxhUy cZeKdq"
+                  >
+                    <strong>
+                      special-defense
+                      :
+                    </strong>
+                    <div />
+                  </li>
+                </styled.li>
+              </PokemonInfoStatsItem>
+              <PokemonInfoStatsItem
+                key="special-attack"
+                stat={
+                  Object {
+                    "base_stat": "48",
+                    "stat": Object {
+                      "name": "special-attack",
+                    },
+                  }
+                }
+              >
+                <styled.li
+                  baseStat="48"
+                >
+                  <li
+                    className="sc-AxhUy cZeKdq"
+                  >
+                    <strong>
+                      special-attack
+                      :
+                    </strong>
+                    <div />
+                  </li>
+                </styled.li>
+              </PokemonInfoStatsItem>
+              <PokemonInfoStatsItem
+                key="defense"
+                stat={
+                  Object {
+                    "base_stat": "48",
+                    "stat": Object {
+                      "name": "defense",
+                    },
+                  }
+                }
+              >
+                <styled.li
+                  baseStat="48"
+                >
+                  <li
+                    className="sc-AxhUy cZeKdq"
+                  >
+                    <strong>
+                      defense
+                      :
+                    </strong>
+                    <div />
+                  </li>
+                </styled.li>
+              </PokemonInfoStatsItem>
+              <PokemonInfoStatsItem
+                key="attack"
+                stat={
+                  Object {
+                    "base_stat": "48",
+                    "stat": Object {
+                      "name": "attack",
+                    },
+                  }
+                }
+              >
+                <styled.li
+                  baseStat="48"
+                >
+                  <li
+                    className="sc-AxhUy cZeKdq"
+                  >
+                    <strong>
+                      attack
+                      :
+                    </strong>
+                    <div />
+                  </li>
+                </styled.li>
+              </PokemonInfoStatsItem>
+              <PokemonInfoStatsItem
+                key="hp"
+                stat={
+                  Object {
+                    "base_stat": "48",
+                    "stat": Object {
+                      "name": "hp",
+                    },
+                  }
+                }
+              >
+                <styled.li
+                  baseStat="48"
+                >
+                  <li
+                    className="sc-AxhUy cZeKdq"
+                  >
+                    <strong>
+                      hp
+                      :
+                    </strong>
+                    <div />
+                  </li>
+                </styled.li>
+              </PokemonInfoStatsItem>
+            </div>
+          </styled.div>
+        </PokemonInfoStatsContainer>
+      </div>
+    </div>
+  </styled.div>
+</PokemonInfo>
+`;

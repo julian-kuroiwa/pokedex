@@ -8,12 +8,14 @@ module.exports = {
   entry: "./src/index.tsx",
   output: {
     path: __dirname + "/dist",
-    filename: "bundle.js"
+    filename: "bundle.js",
+    publicPath: '/'
   },
   devServer: {
       inline: true,
       contentBase: './public',
-      port: 3000
+      port: 3000,
+      historyApiFallback: true
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"]
