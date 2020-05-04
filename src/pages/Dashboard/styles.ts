@@ -138,6 +138,7 @@ export const Pokemons = styled.div`
       text-align: center;
       background: #ff0090;
       color: #fff;
+      text-transform: capitalize;
     }
 
     > span {

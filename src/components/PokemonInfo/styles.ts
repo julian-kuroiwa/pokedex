@@ -5,6 +5,7 @@ export const Container = styled.div`
   margin: 40px auto;
   border: 2px solid var(--primary-color);
   border-radius: 5px;
+  width: 100%;
 
   header {
     width: 100%;
