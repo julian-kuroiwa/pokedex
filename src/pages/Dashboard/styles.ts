@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
+import { animated } from 'react-spring';
 
 import { mediaQueries } from '../../styles/media';
 
@@ -160,4 +161,17 @@ export const Error = styled.div`
   font-size: 36px;
   color: var(--text-color);
   border-radius: 5px;
+`;
+
+export const ScrollTopButton = styled(animated.button)`
+  background-color: var(--primary-color);
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  border: 0;
 `;

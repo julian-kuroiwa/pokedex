@@ -6,9 +6,10 @@ import React, {
   FormEvent,
 } from 'react';
 import { Link } from 'react-router-dom';
-import { FiX } from 'react-icons/fi';
+import { FiX, FiChevronUp } from 'react-icons/fi';
+import { useTransition } from 'react-spring';
 
-import { Container, Title, Pokemons, Error } from './styles';
+import { Container, Title, Pokemons, Error, ScrollTopButton } from './styles';
 
 import LogoPokemon from '../../assets/logo-pokemon.svg';
 
@@ -31,6 +32,26 @@ const Dashboard: React.FC = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const scrollTopButtonTransition = useTransition(isScrolled, null, {
+    enter: {
+      opacity: 1,
+      right: '1%',
+    },
+    leave: {
+      opacity: 0,
+      right: '-120%',
+    },
+    from: { opacity: 0, right: '-120%' },
+  });
+
+  const scrollTopHandle = (): void => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   const requestHandle = async (params: string): Promise<void> => {
     setLoading(true);
@@ -65,6 +86,12 @@ const Dashboard: React.FC = () => {
   };
 
   const scrollHandle = useCallback(() => {
+    if (document.documentElement.scrollTop > 100) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+
     if (
       window.innerHeight + document.documentElement.scrollTop !==
         document.documentElement.offsetHeight ||
@@ -172,6 +199,15 @@ const Dashboard: React.FC = () => {
 
       {loading && <Loader />}
       {error && <Error>Pokemon não encontrado 🙁</Error>}
+
+      {scrollTopButtonTransition.map(
+        ({ item, key, props }) =>
+          item && (
+            <ScrollTopButton key={key} style={props} onClick={scrollTopHandle}>
+              <FiChevronUp size={30} color="#fff" />
+            </ScrollTopButton>
+          ),
+      )}
     </Container>
   );
 };
