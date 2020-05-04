@@ -1,6 +1,6 @@
 # Hanzo-Pokedex-challenge - Julian Kuroiwa
 Find and filter some Pokemons.
-You can check this project running [here](https://compassionate-pare-8c32b9.netlify.app/).
+You can check this project running [here](https://inspiring-euclid-89f487.netlify.app/).
 
 This project uses Webpack, Typescript, React, Styled-Components, React-Spring, Axios, Jest, Enzyme, React Icons, PokeApi.
 
